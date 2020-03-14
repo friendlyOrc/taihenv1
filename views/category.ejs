@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <% include head%>
+<body>	
+    <% include header%>
+    
+    <!--MAIN-->
+    <div class="container">
+        
+        <div class="row justify-content-between ">
+            
+            <!-- TAG LIST -->
+            <div class="col-md-8">
+                <div class="row page">
+                    <div class="col-sm-12">
+                        <h4>Danh sách tags <span class="fas fa-tags"></span></h4>
+                    </div>
+                </div>
+                <div class="row tag_list">
+                    <%var count = Math.round(category.length/3);%>
+                    <div class="col-4">
+
+                    <% for(let i = 0; i < count; i++) {%>
+                        <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
+                            <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                        </a>
+                    <% } %>
+                    </div>
+                    <div class="col-4">
+                        <% for(let i = count; i < count*2; i++) {%>
+                            <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
+                                <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                            </a>
+                        <% } %>
+                    </div>
+                    <div class="col-4">
+                        <% for(let i = count*2; i < category.length; i++) {%>
+                            <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
+                                <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <!-- END OF TAG LIST -->
+            
+            <div class="col-md-3">
+
+                <% include top%>
+                
+            
+            
+            </div>
+        </div>
+    </div>
+    <!-- END OF MAIN -->
+    
+    <% include footer%>
+
+	<!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- TOP ARTICLE -->
+<div class="row top">
+    <div class="col-md-12 top_title">
+        <h5><i class="fas fa-heart"></i> Top view trong tháng</h5>
+    </div>
+    <ul class="top_list">
+        <!--HOT ITEM-->
+        <%for(let i = 0; i < top_articles.length; i++) {%>
+        <li class="top_item bg-dark">
+            <a href="/article/<%= top_articles[i].ar_ID%>">
+                <img src="/images/article/<%= top_articles[i].ar_pic%>">
+            </a>
+            <div class="top_info">
+                <a href="/article/<%= top_articles[i].ar_ID%>" class="main_title"><%= top_articles[i].ar_name%> </a>
+                <span class="badge badge-info"> <%= top_chapter[i][0].chap_name%></span>
+            </div>
+        </li>
+        <% } %>
+        
+    </ul>
+</div>
+<!-- END OF TOP -->

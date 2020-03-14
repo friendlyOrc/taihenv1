@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <% include head%>
+<body>	
+    <% include header%>
+
+    <% include hot%>
+
+    <!-- MAIN -->
+    <div class="container">
+        
+        <div class="row justify-content-between ">
+
+            <!-- NEW -->
+            <div class="col-md-8 new">
+                <div class="row new_title justify-content-between">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <h5><i class="fas fa-book-open"></i> NEW</h5>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 text-right"> 
+                        <a href="/article_list/0" style="text-decoration: none; color: #fff"><h5>Xem thêm <i class="fas fa-caret-right"></i></h5></a>
+                    </div>
+                </div>
+                <% for(var i = 0; i < articles.length; i++) {%>
+                    <div class="row new_item justify-content-between bg-dark">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                            <a href="/article/<%= articles[i].ar_ID%>" class="pic">
+                                <img src="/images/article/<%= articles[i].ar_pic%>">
+                            </a>
+                        </div>
+                        <div class="col-lg-8 col-md-6 col-sm-6 col-6 article_title ">
+                            <a href="/article/<%= articles[i].ar_ID%>" class="main_title"> <%= articles[i].ar_name%> <span class="badge badge-info"> <%= chapters[i][0].chap_name%></span></a>
+                            <p>Lượt xem: <%= articles[i].ar_view%> <i class="fas fa-eye"></i></p>
+                            <%for(var j = 0; j < cate[i].length; j++) {%>
+                                <a href="/article_list/<%= cate[i][j].cat_ID%>" class="cate"><span class="badge badge-pill badge-danger"><%= cate[i][j].cat_name%></span></a>
+                            <%}%>
+                        </div>
+                    </div>
+                <% } %>
+                
+                
+                
+                
+                
+                
+            </div>
+            <!-- END OF NEW -->
+
+            <div class="col-md-3">
+                
+                <!-- RANDOM PIC -->
+                <div class="row random_pic">
+                    <div class="col-md-12 rd_title">
+                        <h5><i class="fas fa-venus-mars"></i> RANDOM PIC</h5>
+                    </div>
+                    <img id="rdImg" src="/images/pic/<%= rd_pic[0].pic_name%>" style="width: 100%; height: auto;">
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+                    
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+                    
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption"></div>
+                    </div>
+                </div>
+                <!-- END OF RANDOM PIC -->
+
+                <% include top%>
+
+            
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    
+    <% include footer%>
+
+	<!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        
+        document.getElementById("rdImg").onclick = function(){
+            window.open($(this)[0].src, '_blank')
+        }
+
+    </script>
+</body>
+</html>

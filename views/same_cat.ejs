@@ -1,0 +1,21 @@
+<!-- SAME CATEGORY -->
+<div class="row top">
+    <div class="col-md-12 top_title">
+        <h5><i class="fas fa-folder"></i> Cùng thể loại</h5>
+    </div>
+    <ul class="top_list">
+        <!--HOT ITEM-->
+        <%for(let i = 0; i < ((same_cate.length <= 5)? same_cate.length:5) ; i++) {%>
+            <li class="top_item bg-dark">
+                <a href="/article/<%= same_cate[i].ar_ID%>">
+                    <img src="/images/article/<%= same_cate[i].ar_pic%>">
+                </a>
+                <div class="top_info">
+                    <a href="/article/<%= same_chapter[i].ar_ID%>" class="main_title"><%= same_cate[i].ar_name%> </a>
+                    <span class="badge badge-info"> <%= same_chapter[i][0].chap_name%></span>
+                </div>
+            </li>
+        <%}%>
+    </ul>
+</div>
+<!-- END OF SAME CATEGORY -->

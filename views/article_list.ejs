@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <% include head%>
+<body>	
+    <% include header%>
+    
+    <!--MAIN-->
+    <div class="container">
+        <div class="row justify-content-between ">
+            <!-- ARTICLE LIST -->
+            <div class="col-md-8">
+                <div class="row page">
+                    <div class="col-sm-12">
+                        <h4>Danh sách các truyện thể loại: <span class="badge badge-pill badge-danger cate_name"><%= cur_tag[0].cat_name%></span></h4>
+                    </div>
+                </div>
+
+                <div class="new row">
+                    <div class="col-sm-12">
+                        <div class="row page_title justify-content-between">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <h5><i class="fas fa-book-open"></i> <span class="cate_name"><%= cur_tag[0].cat_name%></span></h5>
+                            </div>
+                        </div>
+                        
+                        <!-- ARTICLES -->
+                        <% for(var i = 0; i < articles.length; i++) {%>
+                            <div class="row article justify-content-between bg-dark">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                                    <a href="/article/<%= articles[i].ar_ID%>" class="pic">
+                                        <img src="/images/article/<%= articles[i].ar_pic%>">
+                                    </a>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-6 col-6 article_title ">
+                                    <a href="/article/<%= articles[i].ar_ID%>" class="main_title"> <%= articles[i].ar_name%> <span class="badge badge-info"> <%= chapters[i][0].chap_name%></span></a>
+                                    <p>Lượt xem: <%= articles[i].ar_view%> <i class="fas fa-eye"></i></p>
+                                    <%for(var j = 0; j < cate[i].length; j++) {%>
+                                        <a href="" class="cate"><span class="badge badge-pill badge-danger"><%= cate[i][j].cat_name%></span></a>
+                                    <%}%>
+                                </div>
+                            </div>
+                        <% } %>
+
+                        
+                    </div>
+                    <div class="pagination">
+                        <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.previous%>">&laquo;</a>
+
+                        <% for(let i = 0; i < pagination.lastPage; i++) {%>
+                            <%if(pagination.current === i){%>
+                                <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= i%>" class="active"><%= i + 1%></a>
+                            <%} else {%>
+                                <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= i%>"><%= i + 1%></a>
+                            <%}%>
+                        <%}%>
+
+                        <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.next%>">&raquo;</a>
+                    </div>
+                      
+                </div>
+                
+            </div>
+            <!-- END OF ARTICLE LIST -->
+            
+            <!-- SUB -->
+            <div class="col-md-3">
+                
+                <% include top%>
+                
+            
+            </div>
+            <!-- END OF SUB -->
+        </div>
+    </div>
+    <!-- END OF MAIN -->
+    
+    <% include footer%>
+
+	<!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>

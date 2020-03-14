@@ -1,0 +1,25 @@
+<!--HOT-->
+<div class="container hot">
+    <div class="row hot_title">
+        <div class="col-md-12">
+            <h5><i class="fas fa-fire"></i> HOT</h5>
+        </div>
+    </div>
+    <div class="row">
+        <%for(let i = 0; i < hot_articles.length; i++) {%>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-4 text-center hot_item">
+            <a href="/article/<%= hot_articles[i].ar_ID%>">
+                <img src="/images/article/<%= hot_articles[i].ar_pic%>">
+                <div class="middle">
+                    <div class="text">Đọc</div>
+                  </div>
+                <p><%= hot_articles[i].ar_name%></p>
+                <span class="badge badge-pill badge-danger"><%= hot_chapter[i][0].chap_name%></span>
+            </a>
+        </div>
+        <%}%>
+        
+        
+    </div>
+</div>
+<!-- END OF HOT -->
