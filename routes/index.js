@@ -11,6 +11,7 @@ const query = util.promisify(con.query).bind(con);
 
 router.get('/', function(req, res, next) {
   (async () => {
+    try{
       const articles = await query('SELECT * FROM article ORDER BY article.ar_date DESC LIMIT 10');
       let cate = [];
       let chapters = [];
@@ -38,13 +39,16 @@ router.get('/', function(req, res, next) {
         let query3 = "SELECT * from chapter WHERE chapter.ar_ID = ? ORDER BY chapter.chap_ID DESC LIMIT 1";
         top_chapter[i] = await query(query3, top_articles[i].ar_ID);
       }
-      console.log(articles);
+      // console.log(articles);
+      console.log(cate);
       // console.log(chapters);
-      console.log(hot_chapter);
+      // console.log(hot_chapter);
       // console.log(top_articles);
-      
-
       res.render('index', {title: 'Trang chủ', css: 'style', page: 'index', articles, chapters, cate, hot_articles, hot_chapter, rd_pic, top_articles, top_chapter});
+    }catch(err){
+      console.log(err);
+      render('error', {message: 404});
+    }
   })();
 });
 

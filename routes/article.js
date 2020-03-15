@@ -27,11 +27,15 @@ router.get('/:id', async function(req, res, next) {
         if(i != cate.length - 1)cate_list += ", ";
       }
       // console.log(cate_list);
-      const same_cate = await query("SELECT * FROM article, ar_cat WHERE ar_cat.ar_ID = article.ar_ID AND ar_cat.cat_ID IN (" + cate_list + ") AND article.ar_ID <> " +article[0].ar_ID +" GROUP BY article.ar_ID");
+      let same_cate = [];
       let same_chapter = [];
-      for(let i = 0; i < same_cate.length; i++){
-        let query3 = "SELECT * from chapter WHERE chapter.ar_ID = ? ORDER BY chapter.chap_ID DESC LIMIT 1";
-        same_chapter[i] = await query(query3, same_cate[i].ar_ID);
+      if(cate_list){
+        same_cate = await query("SELECT * FROM article, ar_cat WHERE ar_cat.ar_ID = article.ar_ID AND ar_cat.cat_ID IN (" + cate_list + ") AND article.ar_ID <> " +article[0].ar_ID +" GROUP BY article.ar_ID");
+        same_chapter = [];
+        for(let i = 0; i < same_cate.length; i++){
+          let query3 = "SELECT * from chapter WHERE chapter.ar_ID = ? ORDER BY chapter.chap_ID DESC LIMIT 1";
+          same_chapter[i] = await query(query3, same_cate[i].ar_ID);
+        }
       }
       res.render('article', {title: 'Truyện: ' + article[0].ar_name, css: 'article', page: 'article', article, chapters, cate, same_cate, same_chapter});
       
