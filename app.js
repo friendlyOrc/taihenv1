@@ -10,6 +10,9 @@ var arListRouter = require('./routes/article_list');
 var arRouter = require('./routes/article');
 var cateRouter = require('./routes/category');
 var chapterRouter = require('./routes/chapter');
+var search = require('./routes/search');
+var adminRouter = require('./routes/admin');
+var loginRouter = require('./routes/login')
 
 
 
@@ -24,6 +27,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }))
+var session = require('express-session');
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}))
+
 
 app.use('/', indexRouter);
 app.use('/index', indexRouter);
@@ -31,7 +43,9 @@ app.use('/category', cateRouter);
 app.use('/article_list', arListRouter);
 app.use('/article', arRouter);
 app.use('/chapter', chapterRouter);
-
+app.use('/search', search);
+app.use('/admin', adminRouter);
+app.use('/login', loginRouter);
 
 
 

@@ -4,6 +4,7 @@ drop database taihen;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'G34r1#c42&';
 create database taihen CHARACTER SET utf8 COLLATE utf8_general_ci;
 use heroku_f3a0240d5774223;
+use taihen;
 
 SET FOREIGN_KEY_CHECKS = 0;
 create table category(
@@ -49,6 +50,11 @@ create table count_view(
 create table pic(
 	pic_ID int primary key auto_increment,
     pic_name varchar(50)
+);
+CREATE TABLE `account`(
+	accID int primary key,
+    `email` varchar(50),
+    `password` varchar(50)
 );
 SET FOREIGN_KEY_CHECKS = 1;
 insert into category (cat_name, cat_des) values 
@@ -203,20 +209,20 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0; 
-insert into ar_cat (ar_ID, cat_ID) values (2, 1);
-insert into ar_cat (ar_ID, cat_ID) values (2, 2);
-insert into ar_cat (ar_ID, cat_ID) values (2, 3);
+insert into ar_cat (ar_ID, cat_ID) values (4, 1);
+insert into ar_cat (ar_ID, cat_ID) values (5, 2);
+insert into ar_cat (ar_ID, cat_ID) values (6, 3);
 insert into ar_cat (ar_ID, cat_ID) values (12, 4);
 insert into ar_cat (ar_ID, cat_ID) values (12, 5);
 insert into ar_cat (ar_ID, cat_ID) values (12, 6);
 insert into ar_cat (ar_ID, cat_ID) values (22, 1);
 insert into ar_cat (ar_ID, cat_ID) values (22, 3);
 insert into ar_cat (ar_ID, cat_ID) values (22, 5);
-insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(2, 1, 23, 'Chương 1', utc_date());
-insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(2, 2, 23, 'Chương 2', utc_date());
-insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(12, 1, 23, 'Chương 1', utc_date());
+insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(4, 1, 23, 'Chương 1', utc_date());
+insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(5, 2, 23, 'Chương 2', utc_date());
+insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(6, 1, 23, 'Chương 1', utc_date());
 insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(22, 1, 23, 'Chương 1', utc_date());
-
+insert into `account`(accID, email, `password`) VALUES(1, 'adminkienmilo@taihen.inc', 'G34r1#c42&');
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -4,15 +4,15 @@ var mysql = require('mysql');
 var util = require('util');
 
 
+var con = require('./connection');
+
+const query = util.promisify(con.query).bind(con);
 
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
   (async () => {
     try{
-      var con = require('./connection');
-
-      const query = util.promisify(con.query).bind(con);
       const articles = await query('SELECT * FROM article ORDER BY article.ar_date DESC LIMIT 10');
       let cate = [];
       let chapters = [];

@@ -61,9 +61,10 @@ router.get('/:tag',  function(req, res, next) {
       current: page,
       lastPage: last,
       previous: page > 0 ? page - 1 : 0,
-      next: page < last - 1 ? page + 1 : last - 1
+      next: page < (((last - 1) >= 0)?last - 1: 0) ? page + 1 : (((last - 1) >= 0)?last - 1: 0),
+      lastItem: (((page + 4 )< last)?page + 4:last)
     };
-
+    console.log(pagination);
     for(let i = 0; i < articles.length; i++){
       let query2 = "SELECT * FROM ar_cat INNER JOIN category ON category.cat_ID = ar_cat.cat_ID WHERE ar_cat.ar_ID = ? ";
       cate[i] = await query(query2, articles[i].ar_ID);

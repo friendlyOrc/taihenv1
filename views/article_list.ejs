@@ -44,9 +44,9 @@
                         
                     </div>
                     <div class="pagination">
+                        <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=0">First</a>
                         <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.previous%>">&laquo;</a>
-
-                        <% for(let i = 0; i < pagination.lastPage; i++) {%>
+                        <% for(let i = (pagination.current - 3 > 0)?pagination.current - 3: 0; i < pagination.lastItem; i++) {%>
                             <%if(pagination.current === i){%>
                                 <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= i%>" class="active"><%= i + 1%></a>
                             <%} else {%>
@@ -54,7 +54,10 @@
                             <%}%>
                         <%}%>
 
+                        
+
                         <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.next%>">&raquo;</a>
+                        <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.lastPage - 1%>">Last</a>
                     </div>
                       
                 </div>
@@ -76,10 +79,7 @@
     
     <% include footer%>
 
-	<!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<% include js%>
     
 </body>
 </html>
