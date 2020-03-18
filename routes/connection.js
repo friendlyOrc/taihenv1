@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 var connection;
 var db_config = {
-  host: "localhost",
-  user: "root",
-  password: "G34r1#c42&",
-  database: "taihen",
-  dateStrings: true
+  host     : 'us-cdbr-iron-east-04.cleardb.net',
+user     : 'b9793d0b8e99d6',
+password : '81c0149c',
+database: "taihen",
+dateStrings: true
   };
 
 function handleDisconnect() {
