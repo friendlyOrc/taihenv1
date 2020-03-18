@@ -1,7 +1,13 @@
 drop database taihen;
 
 -- Start
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'G34r1#c42&';
+select user();
+CREATE USER 'b9793d0b8e99d6'@'us-cdbr-iron-east-04.cleardb.net'
+  IDENTIFIED BY '81c0149c';
+GRANT ALL
+  ON *.*
+  TO 'b9793d0b8e99d6'@'us-cdbr-iron-east-04.cleardb.net'
+  WITH GRANT OPTION;
 create database taihen CHARACTER SET utf8 COLLATE utf8_general_ci;
 use heroku_f3a0240d5774223;
 use taihen;

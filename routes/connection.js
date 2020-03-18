@@ -2,10 +2,10 @@ var mysql = require('mysql');
 var connection;
 var db_config = {
   host     : 'us-cdbr-iron-east-04.cleardb.net',
-user     : 'b9793d0b8e99d6',
-password : '81c0149c',
-database: "taihen",
-dateStrings: true
+  user     : 'b9793d0b8e99d6',
+  password : '81c0149c',
+  database: "heroku_f3a0240d5774223",
+  dateStrings: true
   };
 
 function handleDisconnect() {
