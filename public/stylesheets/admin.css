@@ -307,9 +307,8 @@ a.bg-danger:hover {
 	margin: 0 ;
 }
 
-h1.page-header {
-	margin-top: 30px;
-	border-bottom: 0;
+.page-header {
+	margin: 10px 0;
 }
 
 /*Icons*/
