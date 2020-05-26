@@ -7,11 +7,15 @@
         <!--HOT ITEM-->
         <%for(let i = 0; i < ((same_cate.length <= 5)? same_cate.length:5) ; i++) {%>
             <li class="top_item bg-dark">
-                <a href="/article/<%= same_cate[i].ar_ID%>">
+                <a href="/article/<%= same_cate[i].ar_ID%>" title="<%= same_cate[i].ar_name%>">
                     <img src="/images/article/<%= same_cate[i].ar_pic%>">
                 </a>
                 <div class="top_info">
-                    <a href="/article/<%= same_chapter[i].ar_ID%>" class="main_title"><%= same_cate[i].ar_name%> </a>
+                    <%if(same_cate[i].ar_name.length > 50){%>
+                        <a href="/article/<%= same_chapter[i].ar_ID%>" class="main_title" title="<%= same_cate[i].ar_name%>"><%= same_cate[i].ar_name.substring(0, 50) + '...'%> </a>
+                    <%} else{%>
+                        <a href="/article/<%= same_chapter[i].ar_ID%>" class="main_title" title="<%= same_cate[i].ar_name%>"><%= same_cate[i].ar_name%> </a>
+                    <%}%>
                     <span class="badge badge-info"> <%= same_chapter[i][0].chap_name%></span>
                 </div>
             </li>

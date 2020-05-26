@@ -10,33 +10,33 @@
         <div class="row justify-content-between ">
             
             <!-- TAG LIST -->
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="row page">
                     <div class="col-sm-12">
                         <h4>Danh sách tags <span class="fas fa-tags"></span></h4>
                     </div>
                 </div>
                 <div class="row tag_list">
-                    <%var count = Math.round(category.length/3);%>
+                    <%var count = Math.round(sess.category.length/3);%>
                     <div class="col-4">
 
                     <% for(let i = 0; i < count; i++) {%>
-                        <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
-                            <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                        <a href="/article_list/<%= sess.category[i].cat_ID%>" class="tag" title="<%= sess.category[i].cat_des%>">
+                            <span class="fas fa-circle dot"> </span>  <%= sess.category[i].cat_name %>
                         </a>
                     <% } %>
                     </div>
                     <div class="col-4">
                         <% for(let i = count; i < count*2; i++) {%>
-                            <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
-                                <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                            <a href="/article_list/<%= sess.category[i].cat_ID%>" class="tag" title="<%= sess.category[i].cat_des%>">
+                                <span class="fas fa-circle dot"> </span>  <%= sess.category[i].cat_name %>
                             </a>
                         <% } %>
                     </div>
                     <div class="col-4">
-                        <% for(let i = count*2; i < category.length; i++) {%>
-                            <a href="/article_list/<%= category[i].cat_ID%>" class="tag">
-                                <span class="fas fa-circle dot"> </span>  <%= category[i].cat_name %>
+                        <% for(let i = count*2; i < sess.category.length; i++) {%>
+                            <a href="/article_list/<%= sess.category[i].cat_ID%>" class="tag" title="<%= sess.category[i].cat_des%>">
+                                <span class="fas fa-circle dot"> </span>  <%= sess.category[i].cat_name %>
                             </a>
                         <% } %>
                     </div>
@@ -44,11 +44,10 @@
             </div>
             <!-- END OF TAG LIST -->
             
-            <div class="col-md-3">
+            <div class="col-lg-3">
 
                 <% include top%>
                 
-            
             
             </div>
         </div>

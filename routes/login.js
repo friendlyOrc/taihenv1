@@ -26,7 +26,7 @@ router.post('/', function(req, res, next){
       if(rs.length){
         sess.userID = rs[0].accID;
         sess.user = rs[0].email;
-        console.log(sess);
+        // console.log(sess);
         res.redirect('/admin');
       }else{
         mess = 'wrong';

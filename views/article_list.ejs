@@ -8,10 +8,12 @@
     <div class="container">
         <div class="row justify-content-between ">
             <!-- ARTICLE LIST -->
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="row page">
                     <div class="col-sm-12">
-                        <h4>Danh sách các truyện thể loại: <span class="badge badge-pill badge-danger cate_name"><%= cur_tag[0].cat_name%></span></h4>
+                        <%if(cur_tag[0]){%>
+                            <h4>Danh sách các truyện thể loại: <span class="badge badge-pill badge-danger cate_name"><%= cur_tag[0].cat_name%></span></h4>
+                        <%}%>
                     </div>
                 </div>
 
@@ -19,24 +21,38 @@
                     <div class="col-sm-12">
                         <div class="row page_title justify-content-between">
                             <div class="col-sm-4 col-md-4 col-lg-4">
-                                <h5><i class="fas fa-book-open"></i> <span class="cate_name"><%= cur_tag[0].cat_name%></span></h5>
+                                <%if(cur_tag[0]){%>
+                                    <h5><i class="fas fa-book-open"></i> <span class="cate_name"><%= cur_tag[0].cat_name%></span></h5>
+                                <%}%>
                             </div>
                         </div>
                         
                         <!-- ARTICLES -->
                         <% for(var i = 0; i < articles.length; i++) {%>
                             <div class="row article justify-content-between bg-dark">
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                    <a href="/article/<%= articles[i].ar_ID%>" class="pic">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-6 pic__wrapper">
+                                    <a href="/article/<%= articles[i].ar_ID%>" class="pic" title="<%= articles[i].ar_name%>">
                                         <img src="/images/article/<%= articles[i].ar_pic%>">
                                     </a>
                                 </div>
                                 <div class="col-lg-8 col-md-6 col-sm-6 col-6 article_title ">
-                                    <a href="/article/<%= articles[i].ar_ID%>" class="main_title"> <%= articles[i].ar_name%> <span class="badge badge-info"> <%= chapters[i][0].chap_name%></span></a>
-                                    <p>Lượt xem: <%= articles[i].ar_view%> <i class="fas fa-eye"></i></p>
-                                    <%for(var j = 0; j < cate[i].length; j++) {%>
-                                        <a href="" class="cate"><span class="badge badge-pill badge-danger"><%= cate[i][j].cat_name%></span></a>
-                                    <%}%>
+                                    <a href="/article/<%= articles[i].ar_ID%>" class="main_title" title="<%= articles[i].ar_name%>"> <%= articles[i].ar_name%></a>
+                                    <br>
+                                    <span class="badge badge-info"><% if(chapters[i][0]){%> <%=chapters[i][0].chap_name%><%}%></span>
+                                    <br>
+                                    <!-- <p>Lượt xem: <%= articles[i].ar_view%> <i class="fas fa-eye"></i></p> -->
+                                    <div class="article__cateList">
+                                        <%if(cate[i].length > 4){%>
+                                            <%for(var j = 0; j < 4; j++) {%>
+                                                <a href="/article_list/<%= cate[i][j].cat_ID%>" class="cate" title="<%= cate[i][j].cat_des%>"><span class="badge badge-pill badge-danger"><%= cate[i][j].cat_name%></span></a>
+                                            <%}%>
+                                            <a href="" class="cate"><span class="badge badge-pill badge-danger">[...]</span></a>
+                                        <%}else {%>
+                                            <%for(var j = 0; j < cate[i].length; j++) {%>
+                                                <a href="/article_list/<%= cate[i][j].cat_ID%>" class="cate" title="<%= cate[i][j].cat_des%>"><span class="badge badge-pill badge-danger"><%= cate[i][j].cat_name%></span></a>
+                                            <%}%>
+                                        <%}%>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
@@ -53,9 +69,6 @@
                                 <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= i%>"><%= i + 1%></a>
                             <%}%>
                         <%}%>
-
-                        
-
                         <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.next%>">&raquo;</a>
                         <a href="/article_list/<%= cur_tag[0].cat_ID%>?page=<%= pagination.lastPage - 1%>">Last</a>
                     </div>
@@ -66,7 +79,7 @@
             <!-- END OF ARTICLE LIST -->
             
             <!-- SUB -->
-            <div class="col-md-3">
+            <div class="col-lg-3">
                 
                 <% include top%>
                 

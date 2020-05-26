@@ -32,7 +32,7 @@
                         Dashboard
                     </a>
                 </li>
-                <% if(page === 'user' || page === 'add_user') {%>
+                <% if(page === 'user' || page === 'add_user' || page === 'edit_user') {%>
                     <li class="active">
                 <%}else{%>
                     <li>
@@ -41,7 +41,7 @@
                         Quản lý thành viên
                     </a>
                 </li>
-                <% if(page === 'category') {%>
+                <% if(page === 'category' || page === 'add_category' || page === 'edit_category') {%>
                     <li class="active">
                 <%}else{%>
                     <li>
@@ -50,21 +50,21 @@
                         Quản lý category
                     </a>
                 </li>
-                <% if(page === 'article') {%>
+                <% if(page === 'articles' || page === 'add_article' || page === 'edit_article') {%>
                     <li class="active">
                 <%}else{%>
                     <li>
                 <%}%>
-                    <a href="/admin/article"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>
+                    <a href="/admin/articles"><svg class="glyph stroked open folder"><use xlink:href="#stroked-open-folder"/></svg>
                         Quản lý article
                     </a>
                 </li>
-                <% if(page === 'chapter') {%>
+                <% if(page === 'chapters' || page === 'add_chapter' || page === 'edit_chapter') {%>
                     <li class="active">
                 <%}else{%>
                     <li>
                 <%}%>
-                    <a href="/admin/chapter"><svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                    <a href="/admin/articles"><svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
                         Quản lý Chapter
                     </a>
                 </li>
@@ -80,6 +80,26 @@
                 <% include user%>
             <%}else if(page === 'add_user'){%>	
                 <% include add_user%>
+            <%}else if(page === 'category'){%>	
+                <% include admin_category%>
+            <%}else if(page === 'add_category'){%>	
+                <% include add_category%>
+            <%}else if(page === 'articles'){%>	
+                <% include admin_articles%>
+            <%}else if(page === 'add_article'){%>	
+                <% include add_article%>
+            <%}else if(page === 'chapters'){%>	
+                <% include admin_chapter%>
+            <%}else if(page === 'add_chapter'){%>	
+                <% include add_chapter%>
+            <%}else if(page === 'edit_user'){%>	
+                <% include edit_user%>
+            <%}else if(page === 'edit_category'){%>	
+                <% include edit_category%>
+            <%}else if(page === 'edit_article'){%>	
+                <% include edit_article%>
+            <%}else if(page === 'edit_chapter'){%>	
+                <% include edit_chapter%>
             <%}%>
         </div>	<!--/.main-->
     </div>	

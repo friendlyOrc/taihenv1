@@ -6,15 +6,18 @@
         </div>
     </div>
     <div class="row">
-        <%for(let i = 0; i < hot_articles.length; i++) {%>
+        <%for(let i = 0; i < sess.hot_articles.length; i++) {%>
         <div class="col-lg-2 col-md-4 col-sm-4 col-4 text-center hot_item">
-            <a href="/article/<%= hot_articles[i].ar_ID%>">
-                <img src="/images/article/<%= hot_articles[i].ar_pic%>">
-                <div class="middle">
-                    <div class="text">Đọc</div>
-                  </div>
-                <p><%= hot_articles[i].ar_name%></p>
-                <span class="badge badge-pill badge-danger"><%= hot_chapter[i][0].chap_name%></span>
+            <a href="/article/<%= sess.hot_articles[i].ar_ID%>">
+                <div class="hot__img__container">
+                    <img src="/images/article/<%= sess.hot_articles[i].ar_pic%>" title="<%=sess.hot_articles[i].ar_name%>">
+                </div>
+                <%if(sess.hot_articles[i].ar_name.length > 30){%>
+                    <p title="<%=sess.hot_articles[i].ar_name%>"><%= sess.hot_articles[i].ar_name.substring(0, 30) + '...'%></p>
+                <%} else{%>
+                    <p title="<%=sess.hot_articles[i].ar_name%>"><%= sess.hot_articles[i].ar_name%></p>
+                <%}%>
+                <span class="badge badge-pill badge-danger" ><% if(sess.hot_chapter[i][0]){%> <%= sess.hot_chapter[i][0].chap_name%><%}%></span>
             </a>
         </div>
         <%}%>

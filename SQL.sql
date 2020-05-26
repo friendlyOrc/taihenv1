@@ -14,14 +14,14 @@ use taihen;
 
 SET FOREIGN_KEY_CHECKS = 0;
 create table category(
-	cat_ID int primary key auto_increment,
+	cat_ID int(20)primary key auto_increment,
     cat_name varchar(20),
     cat_des varchar(100),
     cat_pic varchar(100)
 );
 alter table category auto_increment=0;
 create table article(
-	ar_ID int primary key auto_increment,
+	ar_ID int primary key,
     ar_name varchar(100),
     ar_pic varchar(100),
     ar_chap_num int,
@@ -54,7 +54,7 @@ create table count_view(
     foreign key count_view(ar_ID) references article(ar_ID)
 );
 create table pic(
-	pic_ID int primary key auto_increment,
+	pic_ID int(20)primary key auto_increment,
     pic_name varchar(50)
 );
 CREATE TABLE `account`(
@@ -201,8 +201,8 @@ insert into pic (pic_name) values('2.jpg');
 insert into pic (pic_name) values('3.jpg');
 insert into pic (pic_name) values('4.jpg');
 
-insert into article (ar_name, ar_pic, ar_chap_num, ar_des, ar_date, ar_stt) 
-values('Batman 2020', 'batman 2020.jpg', 1, 'Tuyển tập Batman hành động cực mạnh', utc_date(), 0);
+insert into article (ar_ID, ar_name, ar_pic, ar_chap_num, ar_des, ar_date, ar_stt) 
+values(7, 'Batman 2020', 'batman 2020.jpg', 1, 'Tuyển tập Batman hành động cực mạnh', utc_date(), 0);
 insert into article (ar_name, ar_pic, ar_chap_num, ar_des, ar_date, ar_stt) 
 values('Sword Master', 'sword master.jpg', 1, 'Bậc thầy kiếm thuật', utc_date(), 0);
 insert into article (ar_name, ar_pic, ar_chap_num, ar_des, ar_date, ar_stt) 
@@ -224,7 +224,7 @@ insert into ar_cat (ar_ID, cat_ID) values (12, 6);
 insert into ar_cat (ar_ID, cat_ID) values (22, 1);
 insert into ar_cat (ar_ID, cat_ID) values (22, 3);
 insert into ar_cat (ar_ID, cat_ID) values (22, 5);
-insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(4, 1, 23, 'Chương 1', utc_date());
+insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(2, 1, 23, 'Chương 1', utc_date());
 insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(5, 2, 23, 'Chương 2', utc_date());
 insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(6, 1, 23, 'Chương 1', utc_date());
 insert into chapter (ar_ID, chap_ID, chap_page, chap_name, chap_date) values(22, 1, 23, 'Chương 1', utc_date());

@@ -8,8 +8,11 @@ var con = require('./connection');
 const query = util.promisify(con.query).bind(con);
 
 /* GET ARTICLE LIST. */
+
 router.get('/:search',  function(req, res, next) {
   (async () => {
+    let sess = req.session;
+
     const search = req.params.search;
     const searchStr = search.split(" ").join("%");
     console.log(searchStr);
@@ -41,19 +44,15 @@ router.get('/:search',  function(req, res, next) {
       chapters[i] = await query(query3, articles[i].ar_ID);
     }
 
-    //TOP ARTICLES
-    const top_articles = await query("SELECT count_view.ar_ID, article.ar_name, article.ar_pic, COUNT(count_view.ar_ID) as num FROM count_view INNER JOIN article ON count_view.ar_ID = article.ar_ID WHERE MONTH(count_view.`time`) = MONTH(curdate()) GROUP BY count_view.ar_ID ORDER BY num DESC LIMIT 8;");
-    let top_chapter = [];
-    for(let i = 0; i < top_articles.length; i++){
-      let query3 = "SELECT * from chapter WHERE chapter.ar_ID = ? ORDER BY chapter.chap_ID DESC LIMIT 1";
-      top_chapter[i] = await query(query3, top_articles[i].ar_ID);
-    }
 
-    res.render('search', {title: `Kết quả tìm kiếm`, css: 'article_list', page: 'list', top_articles, top_chapter, search, articles, cate, chapters, pagination});
+    res.render('search', {title: `Kết quả tìm kiếm`, css: 'article_list', page: 'list', sess, search, articles, cate, chapters, pagination});
   })();
 });
 router.post('/',  function(req, res, next) {
   (async () => {
+
+    let sess = req.session;  
+
     const search = req.body.search;
     const searchStr = search.split(" ").join("%");
     console.log(searchStr);
@@ -93,7 +92,7 @@ router.post('/',  function(req, res, next) {
       top_chapter[i] = await query(query3, top_articles[i].ar_ID);
     }
 
-    res.render('search', {title: `Kết quả tìm kiếm`, css: 'article_list', page: 'list', top_articles, top_chapter, search, articles, cate, chapters, pagination});
+    res.render('search', {title: `Kết quả tìm kiếm`, css: 'article_list', page: 'list', sess, search, articles, cate, chapters, pagination});
   })();
 });
 

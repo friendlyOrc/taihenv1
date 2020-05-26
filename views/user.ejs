@@ -21,6 +21,7 @@
             <th scope="col">Account</th>
             <th scope="col">Pass</th>
             <th scope="col">Xem</th>
+            <th scope="col">Edit</th>
             <th scope="col">Xóa account</th>
           </tr>
         </thead>
@@ -30,7 +31,8 @@
                     <th scope="row"><%= sess.account[i].accID%></th>
                     <td><%= sess.account[i].email%></td>
                     <td id="password<%= i%>"></td>
-                    <td><button class="btn btn-success btn-sm" onclick="reveal('<%= sess.account[i].password%>', <%= i%>) "><svg class="glyph stroked eye" style="max-width: 2em; max-height: 1em;"><use xlink:href="#stroked-eye"/></svg></button></td>
+                    <td><button class="btn btn-success btn-sm" onclick="reveal('<%= sess.account[i].password%>', <%= i%>) "><i class="fas fa-eye"></i></button></td>
+                    <td><button class="btn btn-success btn-sm" onclick="window.location.replace('/admin/edit_user/<%= sess.account[i].accID%>')"><i class="fas fa-pen"></i></button></td>
                     <td><button class="btn btn-danger btn-sm" onclick="confirmDelete('<%= sess.account[i].accID%>')"><i class="fas fa-times"></i></button></td>
                 </tr>
             <%}%>

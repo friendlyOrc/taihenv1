@@ -5,14 +5,18 @@
     </div>
     <ul class="top_list">
         <!--HOT ITEM-->
-        <%for(let i = 0; i < top_articles.length; i++) {%>
+        <%for(let i = 0; i < sess.top_articles.length; i++) {%>
         <li class="top_item bg-dark">
-            <a href="/article/<%= top_articles[i].ar_ID%>">
-                <img src="/images/article/<%= top_articles[i].ar_pic%>">
+            <a href="/article/<%= sess.top_articles[i].ar_ID%>" title="<%= sess.top_articles[i].ar_name%>">
+                <img src="/images/article/<%= sess.top_articles[i].ar_pic%>">
             </a>
             <div class="top_info">
-                <a href="/article/<%= top_articles[i].ar_ID%>" class="main_title"><%= top_articles[i].ar_name%> </a>
-                <span class="badge badge-info"> <%= top_chapter[i][0].chap_name%></span>
+                <%if(sess.hot_articles[i].ar_name.length > 50){%>
+                    <a href="/article/<%= sess.top_articles[i].ar_ID%>" class="main_title" title="<%= sess.top_articles[i].ar_name%>"><%= sess.top_articles[i].ar_name.substring(0, 50) + '...'%> </a>
+                <%} else{%>
+                    <a href="/article/<%= sess.top_articles[i].ar_ID%>" class="main_title" title="<%= sess.top_articles[i].ar_name%>"><%= sess.top_articles[i].ar_name%> </a>
+                <%}%>
+                <span class="badge badge-info"> <%= sess.top_chapter[i][0].chap_name%></span>
             </div>
         </li>
         <% } %>

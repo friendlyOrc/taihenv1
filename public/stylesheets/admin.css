@@ -364,6 +364,34 @@ a.bg-danger:hover {
 }
 
 
+.pagination {
+    display: inline-block;
+    margin: 1vw auto;
+}
+
+.pagination a {
+    color: #000;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    text-decoration: none;
+}
+.pagination a:hover {
+    text-decoration: none;
+}
+
+.page{
+    color: #fff;
+    padding: 2vw 0;
+}
 
 
 

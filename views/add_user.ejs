@@ -12,19 +12,19 @@
         <h1>Thêm User</h1> 
     </div>
 </div>
-<%if(message.length > 0) {%>
-    <%if(message === 'empty'){%>
-        <div class="alert alert-danger">Không được để trống thông tin !</div>
-    <%}else if(message === 'wrong'){%>	
-        <div class="alert alert-danger">Email đã tồn tại !</div>
-    <%}else if(message === 'pass'){%>	
-        <div class="alert alert-danger">Mật khẩu không khớp !</div>
-    <%}else if(message === 'accept'){%>	
-        <div class="alert alert-success">Thêm user thành công !</div>
-    <%}%>
-<%}%>
 <div class="row add_user">
     <div class="col-6">
+        <%if(message.length > 0) {%>
+            <%if(message === 'empty'){%>
+                <div class="alert alert-danger">Không được để trống thông tin !</div>
+            <%}else if(message === 'wrong'){%>	
+                <div class="alert alert-danger">Email đã tồn tại !</div>
+            <%}else if(message === 'pass'){%>	
+                <div class="alert alert-danger">Mật khẩu không khớp !</div>
+            <%}else if(message === 'accept'){%>	
+                <div class="alert alert-success">Thêm user thành công !</div>
+            <%}%>
+        <%}%>
         <form role="form" method="POST" action="/admin/add_user">
             <fieldset>
                 <div class="form-group">

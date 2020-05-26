@@ -13,18 +13,31 @@ body{
 }
 .nav-link{
     font-weight: bold;
+    font-size: 1em;
 }
 .navbar{
     padding: 0.2vw 5vw !important;
 }
+
 .navbar-nav {
     width: 100% !important;
 }
+.search_box{
+    width: 100%;
+}
+.search_box .form-inline input{
+    width: 85%;
+}
+.search_box .form-inline button{
+    width: 15%;
+}
 
+/* FOOTER  */
 footer{
     color: #fff;
 }
 
+/* CHAPTER  */
 #ar_name {
     font-weight: bold;
     font-size: 24px;
@@ -46,7 +59,7 @@ footer{
     border-bottom: 1px solid #fff;
 }
 
-
+/* COMMENT SECTION  */
 .cmt_title{
     color: #fff;
     background-color: darkolivegreen;
@@ -141,8 +154,43 @@ footer{
     text-decoration: none;
 }
 
+.nav--floating{
+    position: sticky;
+    bottom: 0;
+    opacity: 0;
+}
+
+.appear{
+    opacity: 1;
+}
 
 
+
+/* RESPONSIVE  */
+@media screen and (min-width: 576px){
+    .search_box .form-inline button{
+        width: 15%;
+    }
+
+}
+/* Small devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+    .search_box .form-inline button{
+        width: 15%;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+    .search_box .form-inline button{
+        width: 10%;
+    }
+ }
+
+/* Large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) { 
+    
+ }
 
 
 
